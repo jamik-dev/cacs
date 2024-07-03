@@ -10,7 +10,11 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/ui": "^2.17.0",
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "axios": "^1.7.2",
     "nuxt": "^3.12.3",
+    "nuxt-swiper": "^1.2.2",
     "vue": "latest"
   }
 }
