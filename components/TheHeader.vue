@@ -14,12 +14,12 @@
       </div>
       <div class="hidden sm:flex items-center gap-6">
         <div class="space-y-1">
-          <p class="text-grey-0 text-sm">E-mail</p>
+          <p class="text-grey-0 text-sm hidden lg:block">E-mail</p>
           <a class="font-medium" href="mailto:info@cacs.hk" target="_blank">info@cacs.hk</a>
         </div>
-        <div class="w-[1px] bg-grey-4 h-10"></div>
+        <div class="w-[1px] bg-grey-4 h-6 lg:h-10"></div>
         <div class="space-y-1">
-          <p class="text-grey-0 text-sm">E-mail</p>
+          <p class="text-grey-0 text-sm hidden lg:block">E-mail</p>
           <a class="font-medium" href="mailto:projects@cacs.hk" target="_blank">projects@cacs.hk</a>
         </div>
       </div>
