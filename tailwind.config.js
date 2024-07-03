@@ -26,14 +26,15 @@ export default {
           0: '#5D5D5F',
           1: '#F5F5F7',
           2: '#C2C2C3',
-          3: '#9A999B'
+          3: '#9A999B',
+          4: '#EBEBEB'
         },
-      },
-      fontFamily: {
-        inherit: 'inherit',
-        golos: ['Golos Text', 'sans-serif'],
-        roboto: ['Roboto Flex', 'sans-serif']
       }
+    },
+    fontFamily: {
+      inherit: 'inherit',
+      roboto: ["Roboto Flex", 'sans-serif'],
+      golos: ["Golos Text", 'sans-serif'],
     }
   },
   plugins: []
