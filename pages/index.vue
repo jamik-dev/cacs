@@ -5,27 +5,39 @@
       :ui="{
         width: 'sm:max-w-[1000px]',
         shadow: 'shadow-none',
-        rounded: 'rounded-3xl',
+        rounded: 'rounded-2xl md:rounded-3xl',
         container: 'items-center'
       }"
     >
       <article class="p-4 md:p-10 space-y-10 relative">
-        <div class="flex justify-end absolute -top-1 -right-14">
-          <UButton class="text-white" color="white" variant="soft" size="lg" :ui="{ rounded: 'rounded-full', icon: { size: { lg: 'w-8 h-8' } } }" icon="i-heroicons-x-mark-20-solid" @click="isModalOpen = false" />
+        <div class="flex justify-end absolute top-1 right-2 md:top-4 md:right-10 xl:-top-1 xl:-right-14">
+          <UButton
+            class="xl:text-white"
+            color="white"
+            variant="soft"
+            size="lg"
+            :ui="{ rounded: 'rounded-full', icon: { size: { lg: 'w-8 h-8' } } }"
+            icon="i-heroicons-x-mark-20-solid"
+            @click="isModalOpen = false"
+          />
         </div>
         <div class="h-[525px] overflow-hidden rounded-lg">
-          <img class="w-full h-full object-cover" src="~/assets/images/modal.png" alt="modal">
+          <img class="w-full h-full object-cover" src="~/assets/images/modal.png" alt="modal" />
         </div>
         <div class="space-y-4">
-          <h4 class="text-xl font-semibold">Representation of transport companies with rich experience EU-Uzbekistan, Asia-Uzbekistan</h4>
-          <p class="text-grey-0">Our company cooperates with experienced transport companies specialising in EU-Uzbekistan and Asia-Uzbekistan routes. We ensure reliable and timely delivery of cargo, which contributes to the smooth operation of your business. Our partners offer various modes of transport, including road, rail and air to meet any customer needs.</p>
+          <h4 class="tetxt-lg md:text-xl font-semibold">Representation of transport companies with rich experience EU-Uzbekistan, Asia-Uzbekistan</h4>
+          <p class="text-sm md:text-base text-grey-0">
+            Our company cooperates with experienced transport companies specialising in EU-Uzbekistan and Asia-Uzbekistan routes. We ensure reliable and timely delivery of cargo,
+            which contributes to the smooth operation of your business. Our partners offer various modes of transport, including road, rail and air to meet any customer needs.
+          </p>
         </div>
-        <div class="p-10 bg-black rounded-lg flex justify-between items-center">
+        <div class="p-5 md:p-10 bg-black rounded-lg flex flex-col gap-y-4 sm:flex-row justify-between sm:items-center">
           <div class="space-y-2">
-            <h4 class="text-xl font-semibold text-white uppercase">Get advice from a manager</h4>
-            <p class="text-grey-2 max-w-[70%]">Need more details? Discuss requirements? We will help you find the right solution</p>
-          </div>  
+            <h4 class="text-lg md:text-xl font-semibold text-white uppercase">Get advice from a manager</h4>
+            <p class="text-grey-2 text-sm md:text-base sm:max-w-[80%] md:max-w-[70%]">Need more details? Discuss requirements? We will help you find the right solution</p>
+          </div>
           <UButton
+            class="w-fit"
             to="#contacts"
             size="xl"
             color="primary"
@@ -39,13 +51,14 @@
     </UModal>
     <section id="hero">
       <div
-        class="flex items-end min-h-[600px] bg-[url('~/assets/images/hero.png')] bg-no-repeat bg-cover relative before:absolute before:pointer-events-none before:left-0 before:top-0 before:h-full before:w-full before:z-1 before:bg-gradient-to-t before:from-[rgba(0,0,0,0.6)] before:to-[rgba(0,0,0,0)]"
+        class="flex items-end min-h-[600px] bg-[url('~/assets/images/hero.png')] bg-no-repeat bg-center bg-cover relative before:absolute before:pointer-events-none before:left-0 before:top-0 before:h-full before:w-full before:z-1 before:bg-gradient-to-t before:from-[rgba(0,0,0,0.6)] before:to-[rgba(0,0,0,0)]"
       >
-        <div class="mb-10 wrapper flex items-center justify-between z-[2]">
-          <h1 class="text-white text-3xl max-w-[70%] font-roboto font-extrabold leading-[120%] uppercase">
+        <div class="mb-5 sm:mb-10 wrapper flex flex-col gap-y-6 sm:flex-row sm:items-center justify-between z-[2]">
+          <h1 class="text-white text-base sm:text-xl md:text-3xl sm:max-w-[70%] font-roboto font-extrabold leading-[120%] uppercase">
             We offer a wide range of services in the field of logistics and supply chain management
           </h1>
           <UButton
+            class="w-fit"
             to="#contacts"
             size="xl"
             color="primary"
@@ -58,15 +71,15 @@
       </div>
     </section>
     <section id="about">
-      <div class="min-h-[530px] bg-[url('~/assets/images/about.png')] bg-no-repeat bg-cover">
-        <div class="wrapper grid grid-cols-10 gap-10 py-20 items-center">
-          <div class="col-span-4 rounded-2xl overflow-hidden group">
+      <div class="min-h-[530px] bg-[url('~/assets/images/about.png')] bg-no-repeat bg-cover bg-center">
+        <div class="wrapper grid grid-cols-1 md:grid-cols-10 gap-10 py-20 items-center">
+          <div class="md:col-span-4 rounded-2xl overflow-hidden group">
             <img class="w-full h-full object-cover group-hover:scale-105 duration-200" src="~/assets/images/about-2.png" alt="about image" />
           </div>
-          <div class="col-span-6">
+          <div class="md:col-span-6">
             <p class="text-red">About us</p>
-            <h2 class="uppercase font-roboto text-3xl font-extrabold mt-1">central asia container service</h2>
-            <p class="text-xl mt-6">
+            <h2 class="uppercase font-roboto text-xl lg:text-3xl font-extrabold mt-1">central asia container service</h2>
+            <p class="text-base lg:text-xl mt-6">
               CENTRAL ASIA CONTAINER SERVICE was founded in 2018 and specializes in providing comprehensive services in the field of logistics, equipment installation and <br />
               installation, as well as personnel training. Our goal is to provide you with high quality services that will help your business grow and prosper. <br />
               <br />
@@ -77,36 +90,37 @@
       </div>
     </section>
     <section id="services">
-      <div class="wrapper py-[120px]">
-        <h3 class="text-3xl font-roboto uppercase font-extrabold">Services</h3>
+      <div class="wrapper py-16 sm:py-[120px]">
+        <h3 class="text-xl md:text-3xl font-roboto uppercase font-extrabold">Services</h3>
         <div class="mt-6 grid grid-cols-12 gap-6">
           <figure
             @click="isModalOpen = true"
             v-for="item in 8"
             :key="item"
-            class="col-span-3 min-h-[460px] flex flex-col justify-end cursor-pointer p-6 rounded-2xl overflow-hidden relative group before:left-0 before:top-0 before:absolute before:pointer-events-none before:h-full before:w-full before:z-[1] before:bg-gradient-to-t before:from-[rgba(0,0,0,0.5)] before:to-[rgba(0,0,0,0)]"
+            class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 min-h-[460px] flex flex-col justify-end cursor-pointer p-6 rounded-2xl overflow-hidden relative group before:left-0 before:top-0 before:absolute before:pointer-events-none before:h-full before:w-full before:z-[1] before:bg-gradient-to-t before:from-[rgba(0,0,0,0.5)] before:to-[rgba(0,0,0,0)]"
           >
-            <img class="absolute z-0 top-0 left-0 w-full h-full object-cover group-hover:scale-110 duration-200" src="~/assets/images/service.png" alt="service image" />
+            <img class="absolute z-0 top-0 left-0 w-full h-full object-cover group-hover:scale-105 duration-200" src="~/assets/images/service.png" alt="service image" />
             <figcaption class="text-lg font-semibold line-clamp-3 z-[2] text-white">
               Representation of transport companies with rich experience EU-Uzbekistan, Asia-Uzbekistan
             </figcaption>
             <p class="flex items-center gap-2 mt-6 z-[2] text-white group-hover:text-red duration-200"><span>Read more</span><UIcon name="i-heroicons-arrow-right" /></p>
           </figure>
         </div>
-        <div class="bg-black p-10 px-[240px] rounded-3xl flex justify-center mt-[120px]">
-          <div class="grid grid-cols-10 gap-20 items-center">
+        <div class="bg-black p-6 sm:p-10 lg:px-[120px] xl:px-[240px] rounded-3xl flex justify-center mt-[120px]">
+          <div class="grid grid-cols-1 sm:grid-cols-10 gap-10 lg:gap-20 items-center">
             <div
-              class="col-span-3 rounded-lg overflow-hidden h-[240px] text-white relative flex flex-col justify-end p-4 before:left-0 before:top-0 before:absolute before:pointer-events-none before:h-full before:w-full before:z-[1] before:bg-gradient-to-t before:from-[rgba(0,0,0,0.6)] before:to-[rgba(0,0,0,0)]"
+              class="sm:col-span-5 md:col-span-3 rounded-lg overflow-hidden h-[480px] sm:h-[340px] md:h-[240px] text-white relative flex flex-col justify-end p-4 before:left-0 before:top-0 before:absolute before:pointer-events-none before:h-full before:w-full before:z-[1] before:bg-gradient-to-t before:from-[rgba(0,0,0,0.6)] before:to-[rgba(0,0,0,0)]"
             >
               <img class="absolute top-0 left-0 w-full h-full object-cover" src="~/assets/images/manager.jfif" alt="manager img" />
-              <h4 class="text-xl font-medium z-[2]">Исмоилов Акбар</h4>
-              <p class="z-[2]">Менежер</p>
+              <h4 class="text-2xl sm:text-lg lg:text-xl font-medium z-[2]">Исмоилов Акбар</h4>
+              <p class="text-lg sm:text-base z-[2]">Менежер</p>
             </div>
-            <div class="col-span-7 flex flex-col">
-              <h3 class="text-white font-extrabold text-3xl font-roboto uppercase">Get advice from a manager</h3>
-              <p class="text-xl text-grey-2 mt-1">Need more details? Discuss requirements? We will help you find the right solution</p>
-              <div class="mt-10 flex items-center gap-10">
+            <div class="sm:col-span-5 md:col-span-7 flex flex-col">
+              <h3 class="text-white font-extrabold text-xl lg:text-3xl font-roboto uppercase">Get advice from a manager</h3>
+              <p class="text-base lg:text-xl text-grey-2 mt-1">Need more details? Discuss requirements? We will help you find the right solution</p>
+              <div class="mt-10 flex flex-col-reverse sm:flex-col md:flex-row md:items-center gap-y-2 gap-x-10">
                 <UButton
+                  class="w-fit"
                   to="#contacts"
                   size="xl"
                   color="primary"
@@ -124,13 +138,27 @@
     </section>
     <section id="clients">
       <div class="wrapper">
-        <h3 class="text-3xl font-roboto uppercase font-extrabold text-center">Our clients and partners</h3>
+        <h3 class="text-xl md:text-3xl font-roboto uppercase font-extrabold text-center">Our clients and partners</h3>
         <Swiper
           class="mt-6"
           :modules="[SwiperAutoplay]"
           :slides-per-view="6"
           :loop="true"
           :speed="1000"
+          :breakpoints="{
+            0: {
+              slidesPerView: 2
+            },
+            640: {
+              slidesPerView: 3
+            },
+            768: {
+              slidesPerView: 4.5
+            },
+            1024: {
+              slidesPerView: 6
+            }
+          }"
           :autoplay="{
             delay: 2000
             // disableOnInteraction: true
@@ -149,6 +177,14 @@
           :loop="true"
           :speed="1000"
           :space-between="24"
+          :breakpoints="{
+            0: {
+              slidesPerView: 1.1
+            },
+            640: {
+              slidesPerView: 2.5
+            }
+          }"
           :autoplay="{
             delay: 3000
             // disableOnInteraction: true
@@ -164,11 +200,11 @@
     </section>
     <section id="contacts">
       <div class="wrapper py-20">
-        <div class="p-14 rounded-3xl bg-grey-1">
-          <h3 class="text-3xl font-roboto uppercase font-extrabold">Contact us</h3>
-          <div class="grid grid-cols-2 gap-7 mt-6">
+        <div class="p-4 sm:p-7 md:p-14 rounded-3xl bg-grey-1">
+          <h3 class="text-center md:text-start text-xl md:text-3xl font-roboto uppercase font-extrabold">Contact us</h3>
+          <div class="grid md:grid-cols-2 gap-7 mt-6">
             <UForm :validate="validate" :state="state" @submit="submitMessage">
-              <div class="grid grid-cols-2 gap-x-4 gap-y-6">
+              <div class="grid sm:grid-cols-2 gap-x-4 gap-y-6">
                 <UFormGroup name="first_name">
                   <UInput
                     type="text"
@@ -213,7 +249,7 @@
                   />
                 </UFormGroup>
 
-                <UFormGroup class="col-span-2" name="company">
+                <UFormGroup class="sm:col-span-2" name="company">
                   <UInput
                     type="text"
                     placeholder="Company"
@@ -281,7 +317,7 @@
                   </ClientOnly>
                 </UFormGroup>
 
-                <UFormGroup class="col-span-2" name="message">
+                <UFormGroup class="sm:col-span-2" name="message">
                   <UTextarea
                     v-model="user.message"
                     placeholder="Your message"
@@ -315,7 +351,7 @@
               />
             </UForm>
             <div class="bg-white rounded-2xl p-6 flex flex-col justify-between">
-              <div class="grid grid-cols-2 gap-6">
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div class="space-y-4">
                   <p class="text-grey-3">Adress</p>
                   <p>18/F., on Hong Commercial Building 145 Hennessy Road, Wanchai HONG KONG</p>
@@ -326,7 +362,7 @@
                 </div>
                 <div class="space-y-4">
                   <p class="text-grey-3">E-mail</p>
-                  <div class="flex gap-4">
+                  <div class="flex flex-col xl:flex-row gap-x-4 gap-y-1">
                     <ULink class="hover:text-red duration-200" target="_blank" to="mailto:info@cacs.hk">info@cacs.hk</ULink>
                     <ULink class="hover:text-red duration-200" target="_blank" to="mailto:projects@cacs.hk">projects@cacs.hk</ULink>
                   </div>
@@ -366,7 +402,7 @@
                   </div>
                 </div>
               </div>
-              <ULink to="/" class="font-[1000] text-lg tracking-tighter uppercase font-roboto"> Central Asia Container Service </ULink>
+              <ULink to="/" class="font-black text-xs sm:text-sm md:text-base lg:text-lg tracking-tighter uppercase font-roboto mt-10"> Central Asia Container Service </ULink>
             </div>
           </div>
         </div>
@@ -390,7 +426,7 @@ useHead(() => {
 });
 
 // dynamic datas
-const isModalOpen = ref(false)
+const isModalOpen = ref(false);
 
 const state = reactive({
   errors: [],
