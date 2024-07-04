@@ -68,6 +68,15 @@
 
 <script setup>
 const isMenuOpen = ref(false);
+
+watch(isMenuOpen, (value) => {
+  if (value) {
+    document.documentElement.style.overflow = 'hidden';
+  } else {
+    document.documentElement.style.overflow = "auto";
+  }
+});
+
 // eventListeners
 onMounted(() => {
   if (process.client) {

@@ -21,7 +21,7 @@
             @click="isModalOpen = false"
           />
         </div>
-        <div class="h-[525px] overflow-hidden rounded-lg">
+        <div class="h-[300px] sm:h-[400px] md:h-[525px] overflow-hidden rounded-lg">
           <img class="w-full h-full object-cover" src="~/assets/images/modal.png" alt="modal" />
         </div>
         <div class="space-y-4">
@@ -37,6 +37,7 @@
             <p class="text-grey-2 text-sm md:text-base sm:max-w-[80%] md:max-w-[70%]">Need more details? Discuss requirements? We will help you find the right solution</p>
           </div>
           <UButton
+            @click="isModalOpen = false"
             class="w-fit"
             to="#contacts"
             size="xl"
@@ -432,6 +433,7 @@ const state = reactive({
   errors: [],
   loading: false
 });
+
 const user = reactive({
   first_name: '',
   last_name: '',
