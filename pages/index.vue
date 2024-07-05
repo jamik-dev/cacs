@@ -30,8 +30,8 @@
         </div>
         <div class="p-5 md:p-10 bg-black rounded-lg flex flex-col gap-y-4 sm:flex-row justify-between sm:items-center">
           <div class="space-y-2">
-            <h4 class="text-lg md:text-xl font-semibold text-white uppercase">Get advice from a manager</h4>
-            <p class="text-grey-2 text-sm md:text-base sm:max-w-[80%] md:max-w-[70%]">Need more details? Discuss requirements? We will help you find the right solution</p>
+            <h4 class="text-lg md:text-xl font-semibold text-white uppercase">{{ data.translations['main.manager_title'] }}</h4>
+            <p class="text-grey-2 text-sm md:text-base sm:max-w-[80%] md:max-w-[70%]">{{ data.translations['main.manager_subtitle'] }}</p>
           </div>
           <UButton
             @click="isModalOpen = false"
@@ -40,7 +40,7 @@
             size="xl"
             color="primary"
             variant="solid"
-            label="Получить консультацию"
+            :label="data.translations['main.get_consulatation']"
             trailingIcon="i-heroicons-arrow-right"
             :ui="{ font: 'font-normal', size: { xl: 'text-sm' }, icon: { size: { xl: 'h-4 w-4' } } }"
           />
@@ -53,7 +53,7 @@
       >
         <div class="mb-5 sm:mb-10 wrapper flex flex-col gap-y-6 sm:flex-row sm:items-center justify-between z-[2]">
           <h1 class="text-white text-base sm:text-xl md:text-3xl sm:max-w-[70%] font-roboto font-extrabold leading-[120%] uppercase">
-            We offer a wide range of services in the field of logistics and supply chain management
+            {{ data.translations['main.hero_title'] }}
           </h1>
           <UButton
             class="w-fit"
@@ -76,12 +76,9 @@
           </div>
           <div class="md:col-span-6">
             <p class="text-red">About us</p>
-            <h2 class="uppercase font-roboto text-xl lg:text-3xl font-extrabold mt-1">central asia container service</h2>
+            <h2 class="uppercase font-roboto text-xl lg:text-3xl font-extrabold mt-1">{{ data.translations['main.about_title'] }}</h2>
             <p class="text-base lg:text-xl mt-6">
-              CENTRAL ASIA CONTAINER SERVICE was founded in 2018 and specializes in providing comprehensive services in the field of logistics, equipment installation and <br />
-              installation, as well as personnel training. Our goal is to provide you with high quality services that will help your business grow and prosper. <br />
-              <br />
-              The company offers a wide range of services in the field of logistics and supply chain management:
+              {{ data.translations['main.about_description'] }}
             </p>
           </div>
         </div>
@@ -114,12 +111,12 @@
               class="sm:col-span-5 md:col-span-3 rounded-lg overflow-hidden h-[480px] sm:h-[340px] md:h-[240px] text-white relative flex flex-col justify-end p-4 before:left-0 before:top-0 before:absolute before:pointer-events-none before:h-full before:w-full before:z-[1] before:bg-gradient-to-t before:from-[rgba(0,0,0,0.6)] before:to-[rgba(0,0,0,0)]"
             >
               <img class="absolute top-0 left-0 w-full h-full object-cover" src="~/assets/images/manager.jfif" alt="manager img" />
-              <h4 class="text-2xl sm:text-lg lg:text-xl font-medium z-[2]">Исмоилов Акбар</h4>
-              <p class="text-lg sm:text-base z-[2]">Менежер</p>
+              <h4 class="text-2xl sm:text-lg lg:text-xl font-medium z-[2]">{{ data.translations['main.manager_name'] }}</h4>
+              <p class="text-lg sm:text-base z-[2]">{{ data.translations['main.manager'] }}</p>
             </div>
             <div class="sm:col-span-5 md:col-span-7 flex flex-col">
-              <h3 class="text-white font-extrabold text-xl lg:text-3xl font-roboto uppercase">Get advice from a manager</h3>
-              <p class="text-base lg:text-xl text-grey-2 mt-1">Need more details? Discuss requirements? We will help you find the right solution</p>
+              <h3 class="text-white font-extrabold text-xl lg:text-3xl font-roboto uppercase">{{ data.translations['main.manager_title'] }}</h3>
+              <p class="text-base lg:text-xl text-grey-2 mt-1">{{ data.translations['main.manager_subtitle'] }}</p>
               <div class="mt-10 flex flex-col-reverse sm:flex-col md:flex-row md:items-center gap-y-2 gap-x-10">
                 <UButton
                   class="w-fit"
@@ -127,11 +124,11 @@
                   size="xl"
                   color="primary"
                   variant="solid"
-                  label="Получить консультацию"
+                  :label="data.translations['main.get_consulatation']"
                   trailingIcon="i-heroicons-arrow-right"
                   :ui="{ font: 'font-normal', size: { xl: 'text-sm' }, icon: { size: { xl: 'h-4 w-4' } } }"
                 />
-                <a class="text-white hover:text-red duration-200" target="_blank" href="mailto:projects@cacs.hk">projects@cacs.hk</a>
+                <a class="text-white hover:text-red duration-200" target="_blank" :href="`mailto:${data.translations['contact.email_2']}`">{{ data.translations['contact.email_2'] }}</a>
               </div>
             </div>
           </div>
@@ -194,7 +191,7 @@
           }"
         >
           <SwiperSlide v-for="banner in data.banners" :key="banner.id">
-            <div class="rounded-2xl overflow-hidden max-h-[370px] relative flex justify-center items-center">
+            <div class="rounded-2xl overflow-hidden h-[370px] relative flex justify-center items-center">
               <img class="w-full h-full object-cover" :src="`${useRuntimeConfig().public.BASE_URL}/storage/${banner.photo}`" :alt="banner.title.en" />
             </div>
           </SwiperSlide>
@@ -204,7 +201,7 @@
     <section id="contacts">
       <div class="wrapper py-20">
         <div class="p-4 sm:p-7 md:p-14 rounded-3xl bg-grey-1">
-          <h3 class="text-center md:text-start text-xl md:text-3xl font-roboto uppercase font-extrabold">Contact us</h3>
+          <h3 class="text-center md:text-start text-xl md:text-3xl font-roboto uppercase font-extrabold">{{ data.translations['contact.title'] }}</h3>
           <div class="grid md:grid-cols-2 gap-7 mt-6">
             <UForm :validate="validate" :state="state" @submit="submitMessage">
               <div class="grid sm:grid-cols-2 gap-x-4 gap-y-6">
@@ -350,7 +347,7 @@
                 size="xl"
                 color="primary"
                 variant="solid"
-                label="Send"
+                :label="data.translations['contact.send']"
                 trailingIcon="i-heroicons-arrow-right"
                 :ui="{ base: 'justify-center', font: 'font-normal', size: { xl: 'text-sm' }, icon: { size: { xl: 'h-4 w-4' } } }"
               />
@@ -358,24 +355,24 @@
             <div class="bg-white rounded-2xl p-6 flex flex-col justify-between">
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div class="space-y-4">
-                  <p class="text-grey-3">Adress</p>
-                  <p>18/F., on Hong Commercial Building 145 Hennessy Road, Wanchai HONG KONG</p>
+                  <p class="text-grey-3">{{ data.translations['contact.address_title'] }}</p>
+                  <p>{{ data.translations['contact.address'] }}</p>
                 </div>
                 <div class="space-y-4">
-                  <p class="text-grey-3">Всего здесь для вас</p>
-                  <p>Горячая линия обслуживания 24/7</p>
+                  <p class="text-grey-3">{{ data.translations['contact.work_title'] }}</p>
+                  <p>{{ data.translations['contact.work_time'] }}</p>
                 </div>
                 <div class="space-y-4">
-                  <p class="text-grey-3">E-mail</p>
+                  <p class="text-grey-3">{{ data.translations['contact.email_title'] }}</p>
                   <div class="flex flex-col xl:flex-row gap-x-4 gap-y-1">
-                    <ULink class="hover:text-red duration-200" target="_blank" to="mailto:info@cacs.hk">info@cacs.hk</ULink>
-                    <ULink class="hover:text-red duration-200" target="_blank" to="mailto:projects@cacs.hk">projects@cacs.hk</ULink>
+                    <ULink class="hover:text-red duration-200" target="_blank" :to="`mailto:${data.translations['contact.email_1']}`">{{ data.translations['contact.email_1'] }}</ULink>
+                    <ULink class="hover:text-red duration-200" target="_blank" :to="`mailto:${data.translations['contact.email_2']}`">{{ data.translations['contact.email_2'] }}</ULink>
                   </div>
                 </div>
                 <div class="space-y-4">
-                  <p class="text-grey-3">Соц, сеть</p>
+                  <p class="text-grey-3">{{ data.translations['contact.social_title'] }}</p>
                   <div class="flex gap-2">
-                    <ULink to="https://facebook.com" target="_blank"
+                    <ULink :to="data.translations['contact.facebook']" target="_blank"
                       ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <circle cx="16" cy="16" r="14" fill="url(#paint0_linear_23_633)" />
                         <path
@@ -390,7 +387,7 @@
                         </defs>
                       </svg>
                     </ULink>
-                    <ULink to="https://linkedin.com" target="_blank"
+                    <ULink :to="data.translations['contact.linkedin']" target="_blank"
                       ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <rect x="2" y="2" width="28" height="28" rx="14" fill="#1275B1" />
                         <path
@@ -407,7 +404,7 @@
                   </div>
                 </div>
               </div>
-              <ULink to="/" class="font-black text-xs sm:text-sm md:text-base lg:text-lg tracking-tighter uppercase font-roboto mt-10"> Central Asia Container Service </ULink>
+              <ULink to="/" class="font-black text-xs sm:text-sm md:text-base lg:text-lg tracking-tighter uppercase font-roboto mt-10">{{ data.translations['logo.title'] }}</ULink>
             </div>
           </div>
         </div>
@@ -466,12 +463,10 @@ const isDisabled = computed(() => {
   return state.loading || validate().length > 0;
 });
 
-
 function serviceModal(id) {
   service.value = data.value.services.find((service) => service.id === id);
   isModalOpen.value = true;
 }
-
 
 async function submitMessage() {
   state.loading = true;
