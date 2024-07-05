@@ -3,7 +3,7 @@
     <div class="wrapper flex sm:flex-col gap-y-4 lg:flex-row sm:items-center justify-between py-4 sm:py-8">
       <div class="flex items-center gap-6">
         <ULink @click="isMenuOpen = false" to="/" class="font-black text-xs sm:text-sm md:text-base lg:text-lg tracking-tighter uppercase font-roboto shrink-0">
-          Central Asia Container Service
+          {{ translations['logo.title'] }}
         </ULink>
         <div class="w-[1px] hidden lg:block bg-grey-4 h-6 shrink-0"></div>
         <nav class="hidden sm:block">
@@ -16,13 +16,13 @@
       </div>
       <div class="hidden sm:flex items-center gap-6">
         <div class="space-y-1">
-          <p class="text-grey-0 text-sm hidden lg:block">E-mail</p>
-          <a class="font-medium" href="mailto:info@cacs.hk" target="_blank">info@cacs.hk</a>
+          <p class="text-grey-0 text-sm hidden lg:block">{{ translations['contact.email_title'] }}</p>
+          <a class="font-medium" :href="`mailto:${ translations['contact.email_1'] }`" target="_blank">{{ translations['contact.email_1'] }}</a>
         </div>
         <div class="w-[1px] bg-grey-4 h-6 lg:h-10"></div>
         <div class="space-y-1">
-          <p class="text-grey-0 text-sm hidden lg:block">E-mail</p>
-          <a class="font-medium" href="mailto:projects@cacs.hk" target="_blank">projects@cacs.hk</a>
+          <p class="text-grey-0 text-sm hidden lg:block">{{ translations['contact.email_title'] }}</p>
+          <a class="font-medium" :href="`mailto:${ translations['contact.email_2'] }`" target="_blank">{{ translations['contact.email_2'] }}</a>
         </div>
       </div>
       <div class="sm:hidden">
@@ -53,9 +53,9 @@
         </nav>
         <div class="mt-20">
           <div class="space-y-1 text-center">
-            <p class="text-grey-0 text-sm">E-mail</p>
-            <a class="font-medium block" href="mailto:info@cacs.hk" target="_blank">info@cacs.hk</a>
-            <a class="font-medium block" href="mailto:projects@cacs.hk" target="_blank">projects@cacs.hk</a>
+            <p class="text-grey-0 text-sm">{{ translations['contact.email_title'] }}</p>
+            <a class="font-medium block" :href="`mailto:${ translations['contact.email_1'] }`" target="_blank">{{ translations['contact.email_1'] }}</a>
+            <a class="font-medium block" :href="`mailto:${ translations['contact.email_2'] }`" target="_blank">{{ translations['contact.email_2'] }}</a>
           </div>
         </div>
       </div>
@@ -64,6 +64,7 @@
 </template>
 
 <script setup>
+defineProps(['translations']);
 const isMenuOpen = ref(false);
 
 watch(isMenuOpen, (value) => {
