@@ -22,14 +22,11 @@
           />
         </div>
         <div class="h-[300px] sm:h-[400px] md:h-[525px] overflow-hidden rounded-lg">
-          <img class="w-full h-full object-cover" src="~/assets/images/modal.png" alt="modal" />
+          <img class="w-full h-full object-cover" :src="`${useRuntimeConfig().public.BASE_URL}/storage/${service.photo}`" :alt="service.title.en" />
         </div>
         <div class="space-y-4">
-          <h4 class="tetxt-lg md:text-xl font-semibold">Representation of transport companies with rich experience EU-Uzbekistan, Asia-Uzbekistan</h4>
-          <p class="text-sm md:text-base text-grey-0">
-            Our company cooperates with experienced transport companies specialising in EU-Uzbekistan and Asia-Uzbekistan routes. We ensure reliable and timely delivery of cargo,
-            which contributes to the smooth operation of your business. Our partners offer various modes of transport, including road, rail and air to meet any customer needs.
-          </p>
+          <h4 class="tetxt-lg md:text-xl font-semibold">{{ service.title.en }}</h4>
+          <div v-html="service.descriptions.en" class="text-sm md:text-base text-grey-0"></div>
         </div>
         <div class="p-5 md:p-10 bg-black rounded-lg flex flex-col gap-y-4 sm:flex-row justify-between sm:items-center">
           <div class="space-y-2">
@@ -95,14 +92,18 @@
         <h3 class="text-xl md:text-3xl font-roboto uppercase font-extrabold">Services</h3>
         <div class="mt-6 grid grid-cols-12 gap-6">
           <figure
-            @click="isModalOpen = true"
-            v-for="item in 8"
-            :key="item"
+            @click="serviceModal(service.id)"
+            v-for="service in data.services"
+            :key="service.id"
             class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 min-h-[460px] flex flex-col justify-end cursor-pointer p-6 rounded-2xl overflow-hidden relative group before:left-0 before:top-0 before:absolute before:pointer-events-none before:h-full before:w-full before:z-[1] before:bg-gradient-to-t before:from-[rgba(0,0,0,0.5)] before:to-[rgba(0,0,0,0)]"
           >
-            <img class="absolute z-0 top-0 left-0 w-full h-full object-cover group-hover:scale-105 duration-200" src="~/assets/images/service.png" alt="service image" />
+            <img
+              class="absolute z-0 top-0 left-0 w-full h-full object-cover group-hover:scale-105 duration-200"
+              :src="`${useRuntimeConfig().public.BASE_URL}/storage/${service.photo}`"
+              :alt="service.title.en"
+            />
             <figcaption class="text-lg font-semibold line-clamp-3 z-[2] text-white">
-              Representation of transport companies with rich experience EU-Uzbekistan, Asia-Uzbekistan
+              {{ service.title.en }}
             </figcaption>
             <p class="flex items-center gap-2 mt-6 z-[2] text-white group-hover:text-red duration-200"><span>Read more</span><UIcon name="i-heroicons-arrow-right" /></p>
           </figure>
@@ -145,6 +146,7 @@
           :modules="[SwiperAutoplay]"
           :slides-per-view="6"
           :loop="true"
+          :space-between="12"
           :speed="1000"
           :breakpoints="{
             0: {
@@ -165,10 +167,10 @@
             // disableOnInteraction: true
           }"
         >
-          <SwiperSlide class="border-r border-grey-4 last:border-0" v-for="slide in 12" :key="slide">
-            <div class="h-[80px] overflow-hidden relative flex justify-center items-center">
-              <img class="object-contain" src="~/assets/images/partner.png" alt="partner" />
-            </div>
+          <SwiperSlide class="border-r border-grey-4 last:border-0" v-for="partner in data.partners" :key="partner.id">
+            <ULink :to="partner.link" target="_blank" class="h-[80px] overflow-hidden relative flex justify-center items-center">
+              <img class="object-contain" :src="`${useRuntimeConfig().public.BASE_URL}/storage/${partner.photo}`" :alt="partner.title.en" />
+            </ULink>
           </SwiperSlide>
         </Swiper>
         <Swiper
@@ -191,9 +193,9 @@
             // disableOnInteraction: true
           }"
         >
-          <SwiperSlide v-for="slide in 6" :key="slide">
+          <SwiperSlide v-for="banner in data.banners" :key="banner.id">
             <div class="rounded-2xl overflow-hidden max-h-[370px] relative flex justify-center items-center">
-              <img class="w-full h-full object-cover" src="~/assets/images/about-2.png" alt="clients" />
+              <img class="w-full h-full object-cover" :src="`${useRuntimeConfig().public.BASE_URL}/storage/${banner.photo}`" :alt="banner.title.en" />
             </div>
           </SwiperSlide>
         </Swiper>
@@ -300,7 +302,7 @@
                       placeholder="Phone number"
                       v-maska
                       data-maska="+998 (##) ###-##-##"
-                      v-model="user.phone"
+                      v-model="user.phone_number"
                       size="xl"
                       :ui="{
                         rounded: 'rounded-none',
@@ -320,7 +322,7 @@
 
                 <UFormGroup class="sm:col-span-2" name="message">
                   <UTextarea
-                    v-model="user.message"
+                    v-model="user.descriptions"
                     placeholder="Your message"
                     size="xl"
                     :ui="{
@@ -341,6 +343,8 @@
               </div>
 
               <UButton
+                :disabled="isDisabled"
+                :loading="state.loading"
                 class="mt-6 w-[200px]"
                 type="submit"
                 size="xl"
@@ -413,6 +417,20 @@
 </template>
 
 <script setup>
+import { useAxios } from '~/api/index';
+
+const { data } = await useAsyncData('home', async () => {
+  const [translations, posts, banners, partners, services] = await Promise.all([
+    useAxios().getRequest('/api/translations'),
+    useAxios().getRequest('/api/posts'),
+    useAxios().getRequest('/api/banners'),
+    useAxios().getRequest('/api/partners'),
+    useAxios().getRequest('/api/services')
+  ]);
+
+  return { translations, posts, banners, partners, services };
+});
+
 useHead(() => {
   return {
     title: 'Central Asia Container Service',
@@ -428,6 +446,7 @@ useHead(() => {
 
 // dynamic datas
 const isModalOpen = ref(false);
+const service = ref(null);
 
 const state = reactive({
   errors: [],
@@ -439,25 +458,38 @@ const user = reactive({
   last_name: '',
   company: '',
   email: '',
-  phone: '',
-  message: ''
+  phone_number: '',
+  descriptions: ''
 });
+
+const isDisabled = computed(() => {
+  return state.loading || validate().length > 0;
+});
+
+
+function serviceModal(id) {
+  service.value = data.value.services.find((service) => service.id === id);
+  isModalOpen.value = true;
+}
+
 
 async function submitMessage() {
   state.loading = true;
   try {
-    alert('hello');
-    // let res = await useServices().postServices('/application/create', {
-    //   ...user
-    // });
-    // if (res.status === 201) {
-    //   state.errors = [];
-    //   user.name = '';
-    //   user.phone = '';
-    //   user.message = '';
-    // } else {
-    //   state.errors = [{ path: 'form', message: 'Something went wrong' }];
-    // }
+    let res = await useAxios().postRequest('/api/zayavkas', {
+      ...user
+    });
+    if (res.status === 201) {
+      user.first_name = '';
+      user.last_name = '';
+      user.company = '';
+      user.email = '';
+      user.phone_number = '';
+      user.descriptions = '';
+      state.errors = [];
+    } else {
+      state.errors = [{ path: 'form', message: 'Something went wrong' }];
+    }
   } catch {
     state.errors = [{ path: 'form', message: 'Something went wrong' }];
   } finally {
@@ -467,16 +499,16 @@ async function submitMessage() {
 
 function validate() {
   const errors = [];
-  if (!user.phone || user.phone.length < 19)
+  if (!user.phone_number || user.phone_number.length < 19)
     errors.push({
       path: 'phone',
-      message: user.phone.length < 19 && user.phone.length > 0 ? 'Phone number should be full' : 'Phone number can not be blank'
+      message: user.phone_number.length < 19 && user.phone_number.length > 0 ? 'Phone number should be full' : 'Phone number can not be blank'
     });
   if (!user.first_name) errors.push({ path: 'first_name', message: 'First Name can not be blank' });
   if (!user.last_name) errors.push({ path: 'last_name', message: 'Last name can not be blank' });
   if (!user.company) errors.push({ path: 'company', message: 'Company can not be blank' });
   if (!user.email) errors.push({ path: 'email', message: 'Email can not be blank' });
-  if (!user.message) errors.push({ path: 'message', message: 'Message can not be blank' });
+  if (!user.descriptions) errors.push({ path: 'message', message: 'Message can not be blank' });
 
   return errors;
 }

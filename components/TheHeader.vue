@@ -2,7 +2,9 @@
   <header id="header" class="sticky top-0 z-10 bg-white">
     <div class="wrapper flex sm:flex-col gap-y-4 lg:flex-row sm:items-center justify-between py-4 sm:py-8">
       <div class="flex items-center gap-6">
-        <ULink @click="isMenuOpen = false" to="/" class="font-black text-xs sm:text-sm md:text-base lg:text-lg tracking-tighter uppercase font-roboto shrink-0"> Central Asia Container Service </ULink>
+        <ULink @click="isMenuOpen = false" to="/" class="font-black text-xs sm:text-sm md:text-base lg:text-lg tracking-tighter uppercase font-roboto shrink-0">
+          Central Asia Container Service
+        </ULink>
         <div class="w-[1px] hidden lg:block bg-grey-4 h-6 shrink-0"></div>
         <nav class="hidden sm:block">
           <ul class="flex items-center gap-10">
@@ -24,12 +26,7 @@
         </div>
       </div>
       <div class="sm:hidden">
-        <UButton
-          @click="isMenuOpen = !isMenuOpen"
-          size="xl"
-          :ui="{ padding: { xl: 'px-2 sm:px-4 py-3 sm:py-4' }, rounded: 'rounded-xl' }"
-          variant="soft"
-        >
+        <UButton @click="isMenuOpen = !isMenuOpen" size="xl" :ui="{ padding: { xl: 'px-2 sm:px-4 py-3 sm:py-4' }, rounded: 'rounded-xl' }" variant="soft">
           <template #trailing>
             <label class="hamburger select-none pointer-events-none">
               <input v-model="isMenuOpen" type="checkbox" />
@@ -73,34 +70,30 @@ watch(isMenuOpen, (value) => {
   if (value) {
     document.documentElement.style.overflow = 'hidden';
   } else {
-    document.documentElement.style.overflow = "auto";
+    document.documentElement.style.overflow = 'auto';
   }
 });
 
 // eventListeners
 onMounted(() => {
-  if (process.client) {
-    const header = document.querySelector('#header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 108) {
-        header.classList.add('shadow-lg');
-      } else if (window.scrollY <= 108) {
-        header.classList.remove('shadow-lg');
-      }
-    });
-  }
+  const header = document.querySelector('#header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 108) {
+      header.classList.add('shadow-lg');
+    } else if (window.scrollY <= 108) {
+      header.classList.remove('shadow-lg');
+    }
+  });
 });
 
 onUnmounted(() => {
-  if (process.client) {
-    window.removeEventListener('scroll', () => {
-      if (window.scrollY > 108) {
-        header.classList.add('shadow-lg');
-      } else if (window.scrollY <= 108) {
-        header.classList.remove('shadow-lg');
-      }
-    });
-  }
+  window.removeEventListener('scroll', () => {
+    if (window.scrollY > 108) {
+      header.classList.add('shadow-lg');
+    } else if (window.scrollY <= 108) {
+      header.classList.remove('shadow-lg');
+    }
+  });
 });
 </script>
 
@@ -142,19 +135,18 @@ onUnmounted(() => {
   stroke-linejoin: round;
   stroke-width: 2;
   /* Define the transition for transforming the Stroke */
-  transition: stroke-dasharray 300ms cubic-bezier(0.4, 0, 0.2, 1),
-    stroke-dashoffset 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: stroke-dasharray 300ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hamburger .line-top-bottom {
   stroke-dasharray: 12 63;
 }
 
-.hamburger input:checked+svg {
+.hamburger input:checked + svg {
   transform: rotate(-45deg);
 }
 
-.hamburger input:checked+svg .line-top-bottom {
+.hamburger input:checked + svg .line-top-bottom {
   stroke-dasharray: 20 300;
   stroke-dashoffset: -32.42;
 }
