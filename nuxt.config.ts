@@ -1,6 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  app: {
+    head: {
+      link: [
+        {
+          rel: "icon",
+          type: "image/svg",
+          href: "/favicon.svg",
+        },
+      ],
+    }
+  },
   css: ['~/assets/css/main.css'],
 
   tailwindcss: {
@@ -22,5 +33,7 @@ export default defineNuxtConfig({
 
   colorMode: {
     preference: 'light'
-  }
+  },
+
+  compatibilityDate: '2024-07-09'
 });
