@@ -110,7 +110,7 @@
             <div
               class="sm:col-span-5 md:col-span-3 rounded-lg overflow-hidden h-[480px] sm:h-[340px] md:h-[240px] text-white relative flex flex-col justify-end p-4 before:left-0 before:top-0 before:absolute before:pointer-events-none before:h-full before:w-full before:z-[1] before:bg-gradient-to-t before:from-[rgba(0,0,0,0.6)] before:to-[rgba(0,0,0,0)]"
             >
-              <img class="absolute top-0 left-0 w-full h-full object-cover" src="~/assets/images/manager.jfif" alt="manager img" />
+              <img class="absolute top-0 left-0 w-full h-full object-cover" src="~/assets/images/manager.png" alt="manager img" />
               <h4 class="text-2xl sm:text-lg lg:text-xl font-medium z-[2]">{{ data.translations['main.manager_name'] }}</h4>
               <p class="text-lg sm:text-base z-[2]">{{ data.translations['main.manager'] }}</p>
             </div>
@@ -135,7 +135,7 @@
         </div>
       </div>
     </section>
-    <section id="clients">
+    <!-- <section id="clients">
       <div class="wrapper">
         <h3 class="text-xl md:text-3xl font-roboto uppercase font-extrabold text-center">Our clients and partners</h3>
         <Swiper
@@ -197,7 +197,7 @@
           </SwiperSlide>
         </Swiper>
       </div>
-    </section>
+    </section> -->
     <section id="contacts">
       <div class="wrapper py-20">
         <div class="p-4 sm:p-7 md:p-14 rounded-3xl bg-grey-1">
@@ -369,7 +369,7 @@
                     <ULink class="hover:text-red duration-200" target="_blank" :to="`mailto:${data.translations['contact.email_2']}`">{{ data.translations['contact.email_2'] }}</ULink>
                   </div>
                 </div>
-                <div class="space-y-4">
+                <!-- <div class="space-y-4">
                   <p class="text-grey-3">{{ data.translations['contact.social_title'] }}</p>
                   <div class="flex gap-2">
                     <ULink :to="data.translations['contact.facebook']" target="_blank"
@@ -402,7 +402,7 @@
                       </svg>
                     </ULink>
                   </div>
-                </div>
+                </div> -->
               </div>
               <ULink to="/" class="font-black text-xs sm:text-sm md:text-base lg:text-lg tracking-tighter uppercase font-roboto mt-10">{{ data.translations['logo.title'] }}</ULink>
             </div>
