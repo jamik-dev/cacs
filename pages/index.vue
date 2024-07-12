@@ -135,7 +135,7 @@
         </div>
       </div>
     </section>
-    <section id="clients">
+    <!-- <section id="clients">
       <div class="wrapper">
         <h3 class="text-xl md:text-3xl font-roboto uppercase font-extrabold text-center">Our clients and partners</h3>
         <Swiper
@@ -197,7 +197,7 @@
           </SwiperSlide>
         </Swiper>
       </div>
-    </section>
+    </section> -->
     <section id="contacts">
       <div class="wrapper py-20">
         <div class="p-4 sm:p-7 md:p-14 rounded-3xl bg-grey-1">
@@ -369,7 +369,7 @@
                     <ULink class="hover:text-red duration-200" target="_blank" :to="`mailto:${data.translations['contact.email_2']}`">{{ data.translations['contact.email_2'] }}</ULink>
                   </div>
                 </div>
-                <div class="space-y-4">
+                <!-- <div class="space-y-4">
                   <p class="text-grey-3">{{ data.translations['contact.social_title'] }}</p>
                   <div class="flex gap-2">
                     <ULink :to="data.translations['contact.facebook']" target="_blank"
@@ -402,7 +402,7 @@
                       </svg>
                     </ULink>
                   </div>
-                </div>
+                </div> -->
               </div>
               <ULink to="/" class="font-black text-xs sm:text-sm md:text-base lg:text-lg tracking-tighter uppercase font-roboto mt-10">{{ data.translations['logo.title'] }}</ULink>
             </div>
