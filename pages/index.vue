@@ -111,7 +111,7 @@
               class="sm:col-span-5 md:col-span-3 rounded-lg overflow-hidden h-[480px] sm:h-[340px] md:h-[240px] text-white relative flex flex-col justify-end p-4 before:left-0 before:top-0 before:absolute before:pointer-events-none before:h-full before:w-full before:z-[1] before:bg-gradient-to-t before:from-[rgba(0,0,0,0.6)] before:to-[rgba(0,0,0,0)]"
             >
               <img class="absolute top-0 left-0 w-full h-full object-cover" src="~/assets/images/manager.png" alt="manager img" />
-              <!-- <h4 class="text-2xl sm:text-lg lg:text-xl font-medium z-[2]">{{ data.translations['main.manager_name'] }}</h4> -->
+              <h4 class="text-2xl sm:text-lg lg:text-xl font-medium z-[2]">{{ data.translations['main.manager_name'] }}</h4>
               <p class="text-lg sm:text-base z-[2]">{{ data.translations['main.manager'] }}</p>
             </div>
             <div class="sm:col-span-5 md:col-span-7 flex flex-col">
