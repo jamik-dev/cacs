@@ -430,12 +430,19 @@ const { data } = await useAsyncData('home', async () => {
 
 useHead(() => {
   return {
-    title: 'Central Asia Container Service',
+    title: 'Central Asia Container Service - Logistics & Training',
     meta: [
       {
-        hid: 'description',
         name: 'description',
-        content: 'Central Asia Container Service'
+        content: 'Central Asia Container Service offers comprehensive logistics, equipment installation, and personnel training services to help your business grow and prosper.'
+      },
+      {
+        name: 'keywords',
+        content: 'Cabs, Central Asia Container Service, logistics, equipment installation, personnel training, business growth, container service'
+      },
+      {
+        name: "google-site-verification",
+        content: "zWz5ZR78q2dYW3PaN2DtULx3MX5kpY83kNjzjZPpU1c"
       }
     ]
   };
